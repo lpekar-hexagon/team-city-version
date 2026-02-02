@@ -53,6 +53,7 @@ project {
         }
     }
 
+    subProject(VersioningDemo2)
     subProject(VersioningDemo)
 }
 
@@ -110,4 +111,9 @@ object VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain : Git
         userName = "lpekar-hexagon"
         password = "credentialsJSON:43eaff24-2819-489a-be39-69e2fbe5a889"
     }
+})
+
+
+object VersioningDemo2 : Project({
+    name = "VersioningDemo2"
 })
