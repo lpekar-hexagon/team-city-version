@@ -1,8 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetMsBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
-import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetMsBuild
 import jetbrains.buildServer.configs.kotlin.projectFeatures.buildReportTab
 import jetbrains.buildServer.configs.kotlin.projectFeatures.githubConnection
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -132,11 +130,12 @@ object VersioningDemo2_Build : BuildType({
     }
 
     steps {
-        dotnetMsBuild {
+        dotnetBuild {
             name = "build"
             id = "build"
             projects = "TeamCityDemo2/TeamCityDemo2.slnx"
-            version = DotnetMsBuildStep.MSBuildVersion.CrossPlatform
+            workingDir = "TeamCityDemo2"
+            args = "/p:Platform=x64 /p:Configuration=Release"
         }
     }
 
