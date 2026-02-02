@@ -133,7 +133,7 @@ object VersioningDemo2_Build : BuildType({
         dotnetBuild {
             name = "build"
             id = "build"
-            projects = "TeamCityDemo2/TeamCityDemo2.slnx"
+            projects = "TeamCityDemo2.slnx"
             workingDir = "TeamCityDemo2"
             args = "/p:Platform=x64 /p:Configuration=Release"
         }
