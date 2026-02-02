@@ -1,6 +1,8 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.DotnetMsBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetBuild
+import jetbrains.buildServer.configs.kotlin.buildSteps.dotnetMsBuild
 import jetbrains.buildServer.configs.kotlin.projectFeatures.buildReportTab
 import jetbrains.buildServer.configs.kotlin.projectFeatures.githubConnection
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -127,6 +129,15 @@ object VersioningDemo2_Build : BuildType({
 
     vcs {
         root(VersioningDemo2_HttpsGithubComLpekarHexagonTeamCityDemo2refsHeadsMain)
+    }
+
+    steps {
+        dotnetMsBuild {
+            name = "build"
+            id = "build"
+            version = DotnetMsBuildStep.MSBuildVersion.CrossPlatform
+            configuration = "/p:Platform=x64 /p:Configuration=Release"
+        }
     }
 
     triggers {
