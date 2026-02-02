@@ -135,6 +135,7 @@ object VersioningDemo2_Build : BuildType({
         dotnetMsBuild {
             name = "build"
             id = "build"
+            projects = "TeamCityDemo2/TeamCityDemo2.slnx"
             version = DotnetMsBuildStep.MSBuildVersion.CrossPlatform
             configuration = "/p:Platform=x64 /p:Configuration=Release"
         }
