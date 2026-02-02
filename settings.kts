@@ -87,7 +87,6 @@ object VersioningDemo_Build : BuildType({
         dotnetBuild {
             id = "dotnet"
             projects = "TeamCityDemo/TeamCityDemo.csproj"
-            args = "not functional parameters demo 1"
             sdk = "10"
         }
     }
