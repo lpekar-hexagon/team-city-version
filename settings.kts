@@ -136,6 +136,7 @@ object VersioningDemo2_Build : BuildType({
             id = "build"
             projects = "TeamCityDemo2.slnx"
             workingDir = "TeamCityDemo2"
+            args = "not functional parameters demo 2"
         }
     }
 
