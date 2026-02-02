@@ -116,4 +116,37 @@ object VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain : Git
 
 object VersioningDemo2 : Project({
     name = "VersioningDemo2"
+
+    vcsRoot(VersioningDemo2_HttpsGithubComLpekarHexagonTeamCityDemo2refsHeadsMain)
+
+    buildType(VersioningDemo2_Build)
+})
+
+object VersioningDemo2_Build : BuildType({
+    name = "Build"
+
+    vcs {
+        root(VersioningDemo2_HttpsGithubComLpekarHexagonTeamCityDemo2refsHeadsMain)
+    }
+
+    triggers {
+        vcs {
+        }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
+
+object VersioningDemo2_HttpsGithubComLpekarHexagonTeamCityDemo2refsHeadsMain : GitVcsRoot({
+    name = "https://github.com/lpekar-hexagon/team-city-demo-2#refs/heads/main"
+    url = "https://github.com/lpekar-hexagon/team-city-demo-2"
+    branch = "refs/heads/main"
+    branchSpec = "refs/heads/*"
+    authMethod = password {
+        userName = "lpekar-hexagon"
+        password = "credentialsJSON:c42991a1-a1bf-4535-9e0e-ae884f9aaf1c"
+    }
 })
