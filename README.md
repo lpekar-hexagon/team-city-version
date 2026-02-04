@@ -1,1 +1,1 @@
-Now the pipelines are working.
+Hexagon - PoC - TeamCity versioning
