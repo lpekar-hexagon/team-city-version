@@ -86,7 +86,7 @@ object VersioningDemo_Build : BuildType({
     steps {
         dotnetBuild {
             id = "dotnet"
-            projects = "TeamCityDemo/TeamCityDemo.csproj"
+            projects = "i like red"
             sdk = "10"
         }
     }
