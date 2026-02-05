@@ -133,7 +133,7 @@ object VersioningDemo2_Build : BuildType({
         dotnetBuild {
             name = "build"
             id = "build"
-            projects = "TeamCityDemo2.slnx"
+            projects = "i really like red"
             workingDir = "TeamCityDemo2"
         }
     }
