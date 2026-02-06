@@ -83,6 +83,7 @@ object VersioningDemo_Build : BuildType({
         checkbox("Parameter_Checkbox", "true",
                   checked = "true", unchecked = "custom unchecked value")
         param("Parameter_Text", "Test of text parameter")
+        password("Parameter_Password", "credentialsJSON:4528f4d9-baf7-4404-8354-0b07f835773d")
     }
 
     vcs {
