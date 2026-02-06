@@ -79,6 +79,10 @@ object VersioningDemo : Project({
 object VersioningDemo_Build : BuildType({
     name = "Build"
 
+    params {
+        param("Parameter_Text", "Test of text parameter")
+    }
+
     vcs {
         root(VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain)
     }
