@@ -84,11 +84,12 @@ object VersioningDemo_Build : BuildType({
         select("Parameter_Select", "Option1",
                 allowMultiple = true, valueSeparator = ",",
                 options = listOf("Option1", "Option2", "Option3"))
+        param("Parameter_Text", "Test of text parameter")
+        password("env.Parameter_Password", "credentialsJSON:8c65e022-2d70-4fb4-a05d-ad71156a65e1")
         checkbox("Parameter_Checkbox", "true",
                   checked = "true", unchecked = "custom unchecked value")
         checkbox("env.Parameter_Checkbox", "false",
                   checked = "true", unchecked = "false")
-        param("Parameter_Text", "Test of text parameter")
         param("env.Parameter_Text", "Enviroment Text Parameter")
     }
 
