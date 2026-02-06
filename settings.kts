@@ -80,6 +80,8 @@ object VersioningDemo_Build : BuildType({
     name = "Build"
 
     params {
+        checkbox("Parameter_Checkbox", "",
+                  checked = "true", unchecked = "custom unchecked value")
         param("Parameter_Text", "Test of text parameter")
     }
 
