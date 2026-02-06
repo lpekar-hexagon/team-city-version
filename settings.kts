@@ -86,8 +86,8 @@ object VersioningDemo_Build : BuildType({
                 options = listOf("Option1", "Option2", "Option3"))
         checkbox("Parameter_Checkbox", "true",
                   checked = "true", unchecked = "custom unchecked value")
-        param("env.Parameter_Checkbox", "Enviroment Text Parameter")
         param("Parameter_Text", "Test of text parameter")
+        param("env.Parameter_Text", "Enviroment Text Parameter")
     }
 
     vcs {
