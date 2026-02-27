@@ -27,7 +27,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
         powerShell {
             name = "Determine Pipeline Mode"
             id = "Determine_Pipeline_Mode"
-            enabled = false
             scriptMode = script {
                 content = """
                     ${'$'}triggeredBy = "%teamcity.build.triggeredBy%"
