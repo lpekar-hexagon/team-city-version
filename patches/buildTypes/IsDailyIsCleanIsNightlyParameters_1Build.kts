@@ -37,10 +37,21 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                         ${'$'}isCleanBuild = "true"
                     }
                     
-                    # Detect IsNightlyBuild from current time (nightly window = 00:00 to 06:29)
-                    ${'$'}now = Get-Date
-                    if (${'$'}now.Hour -lt 6 -or (${'$'}now.Hour -eq 6 -and ${'$'}now.Minute -lt 30)) {
-                        ${'$'}isNightlyBuild = "true"
+                    # Detect IsNightlyBuild from configurable time window
+                    ${'$'}nightlyFrom = [TimeSpan]::Parse("%NightlyFrom%")   # e.g. 20:00
+                    ${'$'}nightlyTo   = [TimeSpan]::Parse("%NightlyTo%")      # e.g. 06:30
+                    ${'$'}nowTime     = (Get-Date).TimeOfDay
+                    
+                    if (${'$'}nightlyFrom -gt ${'$'}nightlyTo) {
+                        # Window crosses midnight (e.g. 20:00 -> 06:30)
+                        if (${'$'}nowTime -ge ${'$'}nightlyFrom -or ${'$'}nowTime -lt ${'$'}nightlyTo) {
+                            ${'$'}isNightlyBuild = "true"
+                        }
+                    } else {
+                        # Window within same day (e.g. 01:00 -> 06:30)
+                        if (${'$'}nowTime -ge ${'$'}nightlyFrom -and ${'$'}nowTime -lt ${'$'}nightlyTo) {
+                            ${'$'}isNightlyBuild = "true"
+                        }
                     }
                     
                     # Set TC parameters for this build
