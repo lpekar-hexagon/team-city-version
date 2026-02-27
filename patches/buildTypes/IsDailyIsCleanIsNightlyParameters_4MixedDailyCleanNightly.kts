@@ -31,6 +31,17 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                 """.trimIndent()
             }
         }
+        powerShell {
+            name = "Daily"
+            id = "Daily"
+            scriptMode = script {
+                content = """
+                    echo "====================="
+                    echo "4. Daily"
+                    echo "====================="
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
