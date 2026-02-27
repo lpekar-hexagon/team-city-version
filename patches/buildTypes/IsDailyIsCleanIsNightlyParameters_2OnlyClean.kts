@@ -22,6 +22,23 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     steps {
         powerShell {
+            name = "Read Pipeline State"
+            id = "Read_Pipeline_State"
+            scriptMode = script {
+                content = """
+                    ${'$'}propsPath = "D:\%system.teamcity.projectName%\pipeline-state.properties"
+                    if (Test-Path ${'$'}propsPath) {
+                        Get-Content ${'$'}propsPath | ForEach-Object {
+                            ${'$'}key, ${'$'}value = ${'$'}_ -split '=', 2
+                            Write-Host "##teamcity[setParameter name='${'$'}key' value='${'$'}value']"
+                        }
+                    } else {
+                        Write-Host "No pipeline-state.properties found, using defaults"
+                    }
+                """.trimIndent()
+            }
+        }
+        powerShell {
             name = "Parameters"
             id = "Parameters"
             scriptMode = script {
@@ -38,23 +55,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     echo "====================="
                     echo "2. OnlyClean"
                     echo "====================="
-                """.trimIndent()
-            }
-        }
-        powerShell {
-            name = "Read Pipeline State"
-            id = "Read_Pipeline_State"
-            scriptMode = script {
-                content = """
-                    ${'$'}propsPath = "D:\%system.teamcity.projectName%\pipeline-state.properties"
-                    if (Test-Path ${'$'}propsPath) {
-                        Get-Content ${'$'}propsPath | ForEach-Object {
-                            ${'$'}key, ${'$'}value = ${'$'}_ -split '=', 2
-                            Write-Host "##teamcity[setParameter name='${'$'}key' value='${'$'}value']"
-                        }
-                    } else {
-                        Write-Host "No pipeline-state.properties found, using defaults"
-                    }
                 """.trimIndent()
             }
         }
