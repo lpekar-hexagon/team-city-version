@@ -17,6 +17,7 @@ create(DslContext.projectId, Project({
     params {
         checkbox("IsNightlyBuild", "false",
                   checked = "true", unchecked = "false")
+        param("NightlyFrom", "20:00")
         checkbox("IsCleanBuild", "false",
                   checked = "true", unchecked = "false")
     }
