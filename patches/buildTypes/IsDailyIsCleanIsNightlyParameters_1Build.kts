@@ -43,11 +43,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
         finishBuildTrigger {
             enabled = false
             buildType = "IsDailyIsCleanIsNightlyParameters_5LastBuild"
-
-            buildParams {
-                checkbox("IsCleanBuild", "false",
-                          checked = "true", unchecked = "false")
-            }
         }
         schedule {
             schedulingPolicy = daily {
