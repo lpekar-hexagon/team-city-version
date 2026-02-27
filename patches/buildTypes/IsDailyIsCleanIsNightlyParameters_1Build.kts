@@ -82,6 +82,13 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                 """.trimIndent()
             }
         }
+        powerShell {
+            name = "DeterminePipelineMode"
+            id = "DeterminePipelineMode"
+            scriptMode = file {
+                path = """D:\%system.teamcity.projectName%\TC_DeterminePipelineMode.ps1"""
+            }
+        }
     }
 
     triggers {
