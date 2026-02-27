@@ -34,6 +34,41 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                 """.trimIndent()
             }
         }
+        powerShell {
+            name = "Determine Pipeline Mode"
+            id = "Determine_Pipeline_Mode"
+            scriptMode = script {
+                content = """
+                    ${'$'}triggeredBy = "%teamcity.build.triggeredBy%"
+                    ${'$'}isCleanBuild = "false"
+                    ${'$'}isNightlyBuild = "false"
+                    
+                    # Detect IsCleanBuild from trigger source
+                    if (${'$'}triggeredBy -match "IsDailyIsCleanIsNightlyParameters_StartCleanBuild") {
+                        ${'$'}isCleanBuild = "true"
+                    }
+                    
+                    # Detect IsNightlyBuild from current time (nightly window = 00:00 to 06:29)
+                    ${'$'}now = Get-Date
+                    if (${'$'}now.Hour -lt 6 -or (${'$'}now.Hour -eq 6 -and ${'$'}now.Minute -lt 30)) {
+                        ${'$'}isNightlyBuild = "true"
+                    }
+                    
+                    # Set TC parameters for this build
+                    Write-Host "##teamcity[setParameter name='IsCleanBuild' value='${'$'}isCleanBuild']"
+                    Write-Host "##teamcity[setParameter name='IsNightlyBuild' value='${'$'}isNightlyBuild']"
+                    
+                    # Persist to shared file for downstream builds
+                    ${'$'}propsPath = "D:\%system.teamcity.projectName%\pipeline-state.properties"
+                    @"
+                    IsCleanBuild=${'$'}isCleanBuild
+                    IsNightlyBuild=${'$'}isNightlyBuild
+                    "@ | Set-Content -Path ${'$'}propsPath -Encoding UTF8
+                    
+                    Write-Host "Pipeline mode: IsCleanBuild=${'$'}isCleanBuild, IsNightlyBuild=${'$'}isNightlyBuild (triggered by: ${'$'}triggeredBy)"
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
