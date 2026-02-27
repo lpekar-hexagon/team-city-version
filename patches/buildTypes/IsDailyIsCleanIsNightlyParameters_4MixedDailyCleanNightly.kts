@@ -4,6 +4,7 @@ import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
+import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -29,6 +30,12 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     echo "====================="
                 """.trimIndent()
             }
+        }
+    }
+
+    triggers {
+        finishBuildTrigger {
+            buildType = "IsDailyIsCleanIsNightlyParameters_3OnlyNightly"
         }
     }
 
