@@ -28,6 +28,8 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                 content = """
                     echo "====================="
                     echo "1. Build"
+                    echo "IsCleanBuild: %IsCleanBuild%"
+                    echo "IsNightlyBuild: %IsNightlyBuild%"
                     echo "====================="
                 """.trimIndent()
             }
