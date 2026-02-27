@@ -39,11 +39,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     triggers {
         finishBuildTrigger {
             buildType = "IsDailyIsCleanIsNightlyParameters_StartCleanBuild"
-
-            buildParams {
-                checkbox("IsCleanBuild", "true",
-                          checked = "true", unchecked = "false")
-            }
         }
         finishBuildTrigger {
             enabled = false
