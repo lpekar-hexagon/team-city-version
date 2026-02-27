@@ -13,5 +13,6 @@ create(DslContext.projectId, Project({
     id("IsDailyIsCleanIsNightlyParameters")
     name = "IsDailyIsCleanIsNightlyParameters"
     description = "Test project for testing: IsDailyBuild, IsCleanBuild & IsNightlyBuild"
+    buildTypesOrderIds = arrayListOf(RelativeId("IsDailyIsCleanIsNightlyParameters_StartCleanBuild"), RelativeId("IsDailyIsCleanIsNightlyParameters_1Build"))
 }))
 
