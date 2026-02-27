@@ -32,7 +32,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     ${'$'}isNightlyBuild = "false"
                     
                     # Detect IsCleanBuild from trigger source
-                    if (${'$'}triggeredBy -match "IsDailyIsCleanIsNightlyParameters_StartCleanBuild") {
+                    if (${'$'}triggeredBy -match "Start Clean Build") {
                         ${'$'}isCleanBuild = "true"
                     }
                     
