@@ -35,6 +35,10 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
         powerShell {
             name = "Clean"
             id = "Clean"
+
+            conditions {
+                equals("IsCleanBuild", "true")
+            }
             scriptMode = script {
                 content = """
                     echo "====================="
