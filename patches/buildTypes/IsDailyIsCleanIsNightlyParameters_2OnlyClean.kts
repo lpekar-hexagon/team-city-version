@@ -39,16 +39,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             }
         }
         powerShell {
-            name = "Parameters"
-            id = "Parameters"
-            scriptMode = script {
-                content = """
-                    echo "IsCleanBuild: %IsCleanBuild%"
-                    echo "IsNightlyBuild: %IsNightlyBuild%"
-                """.trimIndent()
-            }
-        }
-        powerShell {
             id = "jetbrains_powershell"
             scriptMode = script {
                 content = """
