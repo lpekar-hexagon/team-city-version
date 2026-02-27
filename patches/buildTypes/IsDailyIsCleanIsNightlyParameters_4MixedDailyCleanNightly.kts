@@ -22,16 +22,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     steps {
         powerShell {
-            id = "jetbrains_powershell"
-            scriptMode = script {
-                content = """
-                    echo "====================="
-                    echo "4. MixedDailyCleanNightly"
-                    echo "====================="
-                """.trimIndent()
-            }
-        }
-        powerShell {
             name = "Daily"
             id = "Daily"
             scriptMode = script {
