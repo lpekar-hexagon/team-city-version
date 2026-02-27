@@ -41,6 +41,11 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             branchFilter = ""
             triggerBuild = always()
             withPendingChangesOnly = false
+
+            buildParams {
+                checkbox("IsNightlyBuild", "true",
+                          checked = "true", unchecked = "false")
+            }
         }
     }
 
