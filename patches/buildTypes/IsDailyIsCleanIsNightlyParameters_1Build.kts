@@ -74,7 +74,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             name = "DeterminePipelineMode"
             id = "DeterminePipelineMode"
             scriptMode = file {
-                path = """D:\%system.teamcity.projectName%\TC_DeterminePipelineMode.ps1"""
+                path = """\%system.agent.work.dir%\TC_DeterminePipelineMode.ps1"""
             }
         }
         powerShell {
