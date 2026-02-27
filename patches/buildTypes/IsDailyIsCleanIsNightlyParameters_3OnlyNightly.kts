@@ -22,20 +22,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     steps {
         powerShell {
-            id = "jetbrains_powershell"
-
-            conditions {
-                equals("IsNightlyBuild", "true")
-            }
-            scriptMode = script {
-                content = """
-                    echo "====================="
-                    echo "3. OnlyNightly"
-                    echo "====================="
-                """.trimIndent()
-            }
-        }
-        powerShell {
             name = "Read Pipeline State"
             id = "Read_Pipeline_State_2"
             scriptMode = script {
@@ -49,6 +35,20 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     } else {
                         Write-Host "No pipeline-state.properties found, using defaults"
                     }
+                """.trimIndent()
+            }
+        }
+        powerShell {
+            id = "jetbrains_powershell"
+
+            conditions {
+                equals("IsNightlyBuild", "true")
+            }
+            scriptMode = script {
+                content = """
+                    echo "====================="
+                    echo "3. OnlyNightly"
+                    echo "====================="
                 """.trimIndent()
             }
         }
