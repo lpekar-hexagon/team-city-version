@@ -36,7 +36,8 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     triggers {
         schedule {
             schedulingPolicy = daily {
-                hour = 0
+                hour = 10
+                minute = 30
             }
             branchFilter = ""
             triggerBuild = always()
