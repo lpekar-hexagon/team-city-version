@@ -15,11 +15,12 @@ create(DslContext.projectId, Project({
     description = "Test project for testing: IsDailyBuild, IsCleanBuild & IsNightlyBuild"
 
     params {
+        checkbox("IsCleanBuild", "false",
+                  checked = "true", unchecked = "false")
+        param("NightlyTo", "6:30")
         checkbox("IsNightlyBuild", "false",
                   checked = "true", unchecked = "false")
         param("NightlyFrom", "20:00")
-        checkbox("IsCleanBuild", "false",
-                  checked = "true", unchecked = "false")
     }
     buildTypesOrderIds = arrayListOf(RelativeId("IsDailyIsCleanIsNightlyParameters_StartCleanBuild"), RelativeId("IsDailyIsCleanIsNightlyParameters_1Build"))
 }))
