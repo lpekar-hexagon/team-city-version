@@ -22,6 +22,16 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     steps {
         powerShell {
+            name = "Parameters"
+            id = "Parameters"
+            scriptMode = script {
+                content = """
+                    echo "IsCleanBuild: %IsCleanBuild%"
+                    echo "IsNightlyBuild: %IsNightlyBuild%"
+                """.trimIndent()
+            }
+        }
+        powerShell {
             id = "jetbrains_powershell"
 
             conditions {
@@ -32,16 +42,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     echo "====================="
                     echo "2. OnlyClean"
                     echo "====================="
-                """.trimIndent()
-            }
-        }
-        powerShell {
-            name = "Parameters"
-            id = "Parameters"
-            scriptMode = script {
-                content = """
-                    echo "IsCleanBuild: %IsCleanBuild%"
-                    echo "IsNightlyBuild: %IsNightlyBuild%"
                 """.trimIndent()
             }
         }
