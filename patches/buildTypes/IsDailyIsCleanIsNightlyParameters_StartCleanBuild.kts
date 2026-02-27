@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.triggers.schedule
 import jetbrains.buildServer.configs.kotlin.ui.*
 
@@ -17,6 +18,19 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+    }
+
+    steps {
+        powerShell {
+            id = "jetbrains_powershell"
+            scriptMode = script {
+                content = """
+                    echo "====================="
+                    echo "Start Clean Build"
+                    echo "====================="
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
