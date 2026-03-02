@@ -22,6 +22,6 @@ create(DslContext.projectId, Project({
                   checked = "true", unchecked = "false")
         param("NightlyFrom", "20:00")
     }
-    buildTypesOrderIds = arrayListOf(RelativeId("IsDailyIsCleanIsNightlyParameters_StartCleanBuild"), RelativeId("IsDailyIsCleanIsNightlyParameters_1Build"))
+    buildTypesOrderIds = arrayListOf(RelativeId("IsDailyIsCleanIsNightlyParameters_StartCleanBuild"), RelativeId("IsDailyIsCleanIsNightlyParameters_PipelineMode"), RelativeId("IsDailyIsCleanIsNightlyParameters_1Build"), RelativeId("IsDailyIsCleanIsNightlyParameters_2OnlyClean"), RelativeId("IsDailyIsCleanIsNightlyParameters_3OnlyNightly"), RelativeId("IsDailyIsCleanIsNightlyParameters_4MixedDailyCleanNightly"), RelativeId("IsDailyIsCleanIsNightlyParameters_5LastBuild"))
 }))
 
