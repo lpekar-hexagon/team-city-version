@@ -103,6 +103,9 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             branchFilter = ""
             triggerBuild = always()
         }
+        finishBuildTrigger {
+            buildType = "IsDailyIsCleanIsNightlyParameters_PipelineMode"
+        }
     }
 
     features {
