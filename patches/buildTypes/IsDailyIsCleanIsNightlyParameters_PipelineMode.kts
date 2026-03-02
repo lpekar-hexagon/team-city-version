@@ -59,8 +59,8 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     
                     # Persist to shared file for downstream builds
                     ${'$'}tempDir = Join-Path %env.APPDATA% "..\Local\Temp\%system.teamcity.projectName%"
-                    [System.IO.Directory]::Delete(${'$'}tempDir, ${'$'}true)
-                    [System.IO.Directory]::CreateDirectory(${'$'}tempDir)
+                    [System.IO.Directory]::Delete(${'$'}tempDir, ${'$'}true) | Out-Null
+                    [System.IO.Directory]::CreateDirectory(${'$'}tempDir) | Out-Null
                     ${'$'}propsPath = Join-Path ${'$'}tempDir "PipelineMode.properties"
                     
                     @"
