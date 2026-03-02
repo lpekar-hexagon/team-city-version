@@ -75,6 +75,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             buildType = "IsDailyIsCleanIsNightlyParameters_StartCleanBuild"
         }
         finishBuildTrigger {
+            enabled = false
             buildType = "IsDailyIsCleanIsNightlyParameters_5LastBuild"
         }
     }
