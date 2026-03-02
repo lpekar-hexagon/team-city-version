@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.triggers.finishBuildTrigger
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -16,6 +17,12 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+    }
+
+    triggers {
+        finishBuildTrigger {
+            buildType = "IsDailyIsCleanIsNightlyParameters_StartCleanBuild"
+        }
     }
 
     features {
