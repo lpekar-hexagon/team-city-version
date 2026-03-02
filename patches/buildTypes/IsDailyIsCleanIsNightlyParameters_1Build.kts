@@ -95,6 +95,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             buildType = "IsDailyIsCleanIsNightlyParameters_5LastBuild"
         }
         schedule {
+            enabled = false
             schedulingPolicy = daily {
                 hour = 6
                 minute = 30
