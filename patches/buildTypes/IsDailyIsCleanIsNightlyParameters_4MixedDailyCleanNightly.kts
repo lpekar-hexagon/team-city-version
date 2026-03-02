@@ -67,7 +67,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             }
         }
         powerShell {
-            name = "Nighly"
+            name = "Nightly"
             id = "Nighly"
 
             conditions {
