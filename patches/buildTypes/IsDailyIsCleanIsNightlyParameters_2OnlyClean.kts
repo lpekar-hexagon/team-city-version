@@ -16,6 +16,8 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     id("IsDailyIsCleanIsNightlyParameters_2OnlyClean")
     name = "2. OnlyClean"
 
+    buildNumberPattern = "%dep.IsDailyIsCleanIsNightlyParameters_BuildCounter.build.counter%"
+
     vcs {
         root(DslContext.settingsRoot)
 
