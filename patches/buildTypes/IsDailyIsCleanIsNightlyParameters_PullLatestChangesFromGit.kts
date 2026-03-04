@@ -14,6 +14,8 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     id("IsDailyIsCleanIsNightlyParameters_PullLatestChangesFromGit")
     name = "Pull latest changes from Git"
 
+    buildNumberPattern = "%dep.IsDailyIsCleanIsNightlyParameters_BuildCounter.build.counter%"
+
     vcs {
         root(DslContext.settingsRoot)
 
