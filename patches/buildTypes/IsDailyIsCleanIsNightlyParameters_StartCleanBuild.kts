@@ -18,6 +18,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+        root(RelativeId("VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain"))
 
         cleanCheckout = true
         checkoutDir = """D:\%system.teamcity.projectName%\"""
