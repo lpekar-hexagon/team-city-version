@@ -34,6 +34,22 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                 """.trimIndent()
             }
         }
+        powerShell {
+            name = "Create IsCleanBuild file"
+            id = "Create_IsCleanBuild_file"
+            scriptMode = script {
+                content = """
+                    # Create IsCleanBuild file into the checkout dir
+                    ${'$'}propsPath = Join-Path %teamcity.build.checkoutDir% "IsCleanBuild"
+                    
+                    if (-not (Test-Path ${'$'}propsPath)) {
+                        New-Item -Path propsPath -ItemType File
+                    } else {
+                        Write-Host "Error: IsCleanBuild already exists"
+                    }
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
