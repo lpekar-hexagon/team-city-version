@@ -17,6 +17,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     vcs {
         checkoutMode = CheckoutMode.MANUAL
+        checkoutDir = """D:\%system.teamcity.projectName%\"""
     }
 
     steps {
