@@ -15,8 +15,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     name = "Build Counter"
 
     vcs {
-        root(RelativeId("VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain"))
-
         checkoutMode = CheckoutMode.MANUAL
     }
 
