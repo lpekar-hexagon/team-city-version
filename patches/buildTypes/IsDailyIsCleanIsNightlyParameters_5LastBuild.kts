@@ -36,6 +36,20 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                 """.trimIndent()
             }
         }
+        powerShell {
+            name = "Delete IsCleanBuild file"
+            id = "Delete_IsCleanBuild_file"
+            scriptMode = script {
+                content = """
+                    # Create IsCleanBuild file into the checkout dir
+                    ${'$'}propsPath = Join-Path %teamcity.build.checkoutDir% "IsCleanBuild"
+                    
+                    if (Test-Path ${'$'}propsPath) {
+                        Remove-Item ${'$'}propsPath
+                    }
+                """.trimIndent()
+            }
+        }
     }
 
     triggers {
