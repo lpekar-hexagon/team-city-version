@@ -20,7 +20,7 @@ create(DslContext.projectId, Project({
         param("NightlyTo", "6:30")
         checkbox("IsNightlyBuild", "false",
                   checked = "true", unchecked = "false")
-        param("NightlyFrom", "20:00")
+        param("NightlyFrom", "12:00")
     }
     buildTypesOrderIds = arrayListOf(RelativeId("IsDailyIsCleanIsNightlyParameters_BuildCounter"), RelativeId("IsDailyIsCleanIsNightlyParameters_PullLatestChangesFromGit"), RelativeId("IsDailyIsCleanIsNightlyParameters_StartCleanBuild"), RelativeId("IsDailyIsCleanIsNightlyParameters_1Build"), RelativeId("IsDailyIsCleanIsNightlyParameters_2OnlyClean"), RelativeId("IsDailyIsCleanIsNightlyParameters_3OnlyNightly"), RelativeId("IsDailyIsCleanIsNightlyParameters_4MixedDailyCleanNightly"), RelativeId("IsDailyIsCleanIsNightlyParameters_5LastBuild"))
 }))
