@@ -31,7 +31,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             id = "Read_Pipeline_State"
             scriptMode = script {
                 content = """
-                    ${'$'}propsPath = Join-Path %env.APPDATA% "..\Local\Temp\%system.teamcity.projectName%\PipelineMode.properties"
+                    ${'$'}propsPath = Join-Path %teamcity.build.checkoutDir% "PipelineMode.properties"
                     if (Test-Path ${'$'}propsPath) {
                         Get-Content ${'$'}propsPath | ForEach-Object {
                             ${'$'}key, ${'$'}value = ${'$'}_ -split '=', 2
