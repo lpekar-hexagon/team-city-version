@@ -65,8 +65,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     Write-Host "##teamcity[setParameter name='IsNightlyBuild' value='${'$'}isNightlyBuild']"
                     
                     # Persist to shared file for downstream builds
-                    ${'$'}tempDir = ${'$'}env:TEAMCITY_BUILD_CHECKOUTDIR
-                    ${'$'}propsPath = Join-Path ${'$'}tempDir "PipelineMode.properties"
+                    ${'$'}propsPath = Join-Path %teamcity.build.checkoutDir% "PipelineMode.properties"
                     
                     @"
                     IsCleanBuild=${'$'}isCleanBuild
