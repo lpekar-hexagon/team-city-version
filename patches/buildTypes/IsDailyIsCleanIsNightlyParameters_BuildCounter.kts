@@ -26,14 +26,11 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             id = "Set_IsCleanBuild_IsNightlyBuild_parameters"
             scriptMode = script {
                 content = """
-                    ${'$'}triggeredBy = "%teamcity.build.triggeredBy%"
                     ${'$'}isCleanBuild = "false"
                     ${'$'}isNightlyBuild = "false"
                     
-                    # Detect IsCleanBuild from trigger source
+                    # Detect IsCleanBuild from file
                     ${'$'}isCleanBuildFilePath = Join-Path %teamcity.build.checkoutDir% "IsCleanBuild"
-                    Write-Host "HERE"
-                    Write-Host ${'$'}isCleanBuildFilePath
                     
                     if (Test-Path ${'$'}isCleanBuildFilePath) {
                     	${'$'}isCleanBuild = "true"
@@ -60,7 +57,10 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     Write-Host "##teamcity[setParameter name='IsCleanBuild' value='${'$'}isCleanBuild']"
                     Write-Host "##teamcity[setParameter name='IsNightlyBuild' value='${'$'}isNightlyBuild']"
                     
-                    Write-Host "Pipeline mode: IsCleanBuild=${'$'}isCleanBuild, IsNightlyBuild=${'$'}isNightlyBuild (triggered by: ${'$'}triggeredBy)"
+                    Write-Host "------Pipeline Mode------"
+                    Write-Host "IsCleanBuild=${'$'}isCleanBuild"
+                    Write-Host "IsNightlyBuild=${'$'}isNightlyBuild"
+                    Write-Host "-------------------------"
                 """.trimIndent()
             }
         }
