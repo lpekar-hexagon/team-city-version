@@ -15,7 +15,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     name = "Build Counter"
 
     vcs {
-        root(DslContext.settingsRoot)
         root(RelativeId("VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain"))
 
         checkoutMode = CheckoutMode.MANUAL
