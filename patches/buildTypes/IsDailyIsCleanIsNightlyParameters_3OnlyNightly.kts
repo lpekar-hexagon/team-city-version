@@ -47,7 +47,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             id = "jetbrains_powershell"
 
             conditions {
-                equals("IsNightlyBuild", "true")
+                equals("dep.IsDailyIsCleanIsNightlyParameters_BuildCounter.IsNightlyBuild", "true")
             }
             scriptMode = script {
                 content = """
