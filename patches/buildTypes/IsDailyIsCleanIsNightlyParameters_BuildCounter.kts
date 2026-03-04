@@ -16,6 +16,8 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+
+        checkoutMode = CheckoutMode.MANUAL
     }
 
     features {
