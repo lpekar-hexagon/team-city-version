@@ -29,6 +29,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
         powerShell {
             name = "Read Pipeline State"
             id = "Read_Pipeline_State_2_2"
+            enabled = false
             scriptMode = script {
                 content = """
                     ${'$'}propsPath = Join-Path %teamcity.build.checkoutDir% "PipelineMode.properties"
