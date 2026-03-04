@@ -17,7 +17,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     name = "Start Clean Build"
 
     vcs {
-        root(DslContext.settingsRoot)
         root(RelativeId("VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain"))
 
         cleanCheckout = true
