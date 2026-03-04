@@ -25,16 +25,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     steps {
         powerShell {
-            id = "jetbrains_powershell"
-            scriptMode = script {
-                content = """
-                    echo "====================="
-                    echo "1. Build"
-                    echo "====================="
-                """.trimIndent()
-            }
-        }
-        powerShell {
             name = "Determine Pipeline Mode"
             id = "Determine_Pipeline_Mode_1_1"
             scriptMode = script {
@@ -82,6 +72,16 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     "@ | Set-Content -Path ${'$'}propsPath -Encoding UTF8
                     
                     Write-Host "Pipeline mode: IsCleanBuild=${'$'}isCleanBuild, IsNightlyBuild=${'$'}isNightlyBuild (triggered by: ${'$'}triggeredBy)"
+                """.trimIndent()
+            }
+        }
+        powerShell {
+            id = "jetbrains_powershell"
+            scriptMode = script {
+                content = """
+                    echo "====================="
+                    echo "1. Build"
+                    echo "====================="
                 """.trimIndent()
             }
         }
