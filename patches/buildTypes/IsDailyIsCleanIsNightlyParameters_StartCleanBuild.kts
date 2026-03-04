@@ -25,16 +25,6 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     steps {
         powerShell {
-            id = "jetbrains_powershell"
-            scriptMode = script {
-                content = """
-                    echo "====================="
-                    echo "Start Clean Build"
-                    echo "====================="
-                """.trimIndent()
-            }
-        }
-        powerShell {
             name = "Create IsCleanBuild file"
             id = "Create_IsCleanBuild_file"
             scriptMode = script {
@@ -47,6 +37,16 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     } else {
                         Write-Host "Error: IsCleanBuild already exists"
                     }
+                """.trimIndent()
+            }
+        }
+        powerShell {
+            id = "jetbrains_powershell"
+            scriptMode = script {
+                content = """
+                    echo "====================="
+                    echo "Start Clean Build"
+                    echo "====================="
                 """.trimIndent()
             }
         }
