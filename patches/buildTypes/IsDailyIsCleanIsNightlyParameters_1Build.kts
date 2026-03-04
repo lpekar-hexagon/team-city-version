@@ -106,7 +106,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             triggerBuild = always()
         }
         finishBuildTrigger {
-            buildType = "IsDailyIsCleanIsNightlyParameters_PipelineMode"
+            buildType = "IsDailyIsCleanIsNightlyParameters_StartCleanBuild"
         }
     }
 
