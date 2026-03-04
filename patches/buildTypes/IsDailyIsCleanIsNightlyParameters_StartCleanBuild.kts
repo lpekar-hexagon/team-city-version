@@ -19,6 +19,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     vcs {
         root(DslContext.settingsRoot)
 
+        cleanCheckout = true
         checkoutDir = """D:\%system.teamcity.projectName%\"""
     }
 
