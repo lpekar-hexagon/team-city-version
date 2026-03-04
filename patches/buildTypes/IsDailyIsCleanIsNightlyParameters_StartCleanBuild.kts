@@ -33,7 +33,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     ${'$'}propsPath = Join-Path %teamcity.build.checkoutDir% "IsCleanBuild"
                     
                     if (-not (Test-Path ${'$'}propsPath)) {
-                        New-Item -Path propsPath -ItemType File
+                        New-Item -Path ${'$'}propsPath -ItemType File
                     } else {
                         Write-Host "Error: IsCleanBuild already exists"
                     }
