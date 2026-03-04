@@ -31,6 +31,8 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
                     
                     # Detect IsCleanBuild from trigger source
                     ${'$'}isCleanBuildFilePath = Join-Path %teamcity.build.checkoutDir% "IsCleanBuild"
+                    Write-Host "HERE"
+                    Write-Host ${'$'}isCleanBuildFilePath
                     
                     if (Test-Path ${'$'}isCleanBuildFilePath) {
                     	${'$'}isCleanBuild = "true"
