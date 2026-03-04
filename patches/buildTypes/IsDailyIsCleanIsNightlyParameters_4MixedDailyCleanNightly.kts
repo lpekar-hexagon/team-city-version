@@ -60,7 +60,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
             id = "Clean"
 
             conditions {
-                equals("IsCleanBuild", "true")
+                equals("dep.IsDailyIsCleanIsNightlyParameters_BuildCounter.IsCleanBuild", "true")
             }
             scriptMode = script {
                 content = """
