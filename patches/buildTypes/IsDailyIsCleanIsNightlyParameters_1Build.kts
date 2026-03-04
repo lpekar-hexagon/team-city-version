@@ -111,5 +111,14 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        snapshot(RelativeId("IsDailyIsCleanIsNightlyParameters_PullLatestChangesFromGit")) {
+            runOnSameAgent = true
+            reuseBuilds = ReuseBuilds.NO
+            onDependencyFailure = FailureAction.IGNORE
+            onDependencyCancel = FailureAction.IGNORE
+        }
+    }
 }))
 
