@@ -20,6 +20,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
         root(RelativeId("VersioningDemo_HttpsGithubComLpekarHexagonTeamCityDemoRefsHeadsMain"))
 
         checkoutMode = CheckoutMode.ON_AGENT
+        checkoutDir = """D:\%system.teamcity.projectName%\"""
     }
 
     features {
