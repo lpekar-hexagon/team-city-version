@@ -3,6 +3,7 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.BuildType
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.powerShell
 import jetbrains.buildServer.configs.kotlin.ui.*
 
 /*
@@ -16,6 +17,50 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
 
     vcs {
         checkoutMode = CheckoutMode.MANUAL
+    }
+
+    steps {
+        powerShell {
+            name = "Set IsCleanBuild IsNightlyBuild parameters"
+            id = "Set_IsCleanBuild_IsNightlyBuild_parameters"
+            scriptMode = script {
+                content = """
+                    ${'$'}triggeredBy = "%teamcity.build.triggeredBy%"
+                    ${'$'}isCleanBuild = "false"
+                    ${'$'}isNightlyBuild = "false"
+                    
+                    # Detect IsCleanBuild from trigger source
+                    ${'$'}isCleanBuildFilePath = Join-Path %teamcity.build.checkoutDir% "IsCleanBuild"
+                    
+                    if (Test-Path ${'$'}isCleanBuildFilePath) {
+                    	${'$'}isCleanBuild = "true"
+                    }
+                    
+                    # Detect IsNightlyBuild from configurable time window
+                    ${'$'}nightlyFrom = [TimeSpan]::Parse("%NightlyFrom%")   # e.g. 20:00
+                    ${'$'}nightlyTo   = [TimeSpan]::Parse("%NightlyTo%")      # e.g. 06:30
+                    ${'$'}nowTime     = (Get-Date).TimeOfDay
+                    
+                    if (${'$'}nightlyFrom -gt ${'$'}nightlyTo) {
+                        # Window crosses midnight (e.g. 20:00 -> 06:30)
+                        if (${'$'}nowTime -ge ${'$'}nightlyFrom -or ${'$'}nowTime -lt ${'$'}nightlyTo) {
+                            ${'$'}isNightlyBuild = "true"
+                        }
+                    } else {
+                        # Window within same day (e.g. 01:00 -> 06:30)
+                        if (${'$'}nowTime -ge ${'$'}nightlyFrom -and ${'$'}nowTime -lt ${'$'}nightlyTo) {
+                            ${'$'}isNightlyBuild = "true"
+                        }
+                    }
+                    
+                    # Set TC parameters for this build
+                    Write-Host "##teamcity[setParameter name='IsCleanBuild' value='${'$'}isCleanBuild']"
+                    Write-Host "##teamcity[setParameter name='IsNightlyBuild' value='${'$'}isNightlyBuild']"
+                    
+                    Write-Host "Pipeline mode: IsCleanBuild=${'$'}isCleanBuild, IsNightlyBuild=${'$'}isNightlyBuild (triggered by: ${'$'}triggeredBy)"
+                """.trimIndent()
+            }
+        }
     }
 
     features {
