@@ -73,7 +73,7 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
     dependencies {
         snapshot(RelativeId("IsDailyIsCleanIsNightlyParameters_BuildCounter")) {
             runOnSameAgent = true
-            reuseBuilds = ReuseBuilds.NO
+            reuseBuilds = ReuseBuilds.ANY
             onDependencyFailure = FailureAction.IGNORE
             onDependencyCancel = FailureAction.IGNORE
         }
