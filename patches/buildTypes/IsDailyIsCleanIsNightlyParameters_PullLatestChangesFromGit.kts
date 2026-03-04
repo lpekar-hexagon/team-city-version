@@ -24,5 +24,11 @@ create(RelativeId("IsDailyIsCleanIsNightlyParameters"), BuildType({
         perfmon {
         }
     }
+
+    dependencies {
+        snapshot(RelativeId("IsDailyIsCleanIsNightlyParameters_BuildCounter")) {
+            reuseBuilds = ReuseBuilds.ANY
+        }
+    }
 }))
 
